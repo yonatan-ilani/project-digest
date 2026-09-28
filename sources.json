@@ -1,0 +1,10 @@
+{
+  "_comment": "What /digest pulls. type 'live' = re-read every digest; 'context' = read once. 'via' names the tool: an MCP (linear, jira, github, slack, gdrive, notion…), 'git', 'gh', or 'file'.",
+  "publish": null,
+  "sources": [
+    { "id": "issues", "label": "GitHub Issues — acme/checkout", "type": "live", "via": "gh", "locator": "repo acme/checkout, label checkout-revamp" },
+    { "id": "slack", "label": "Slack — #checkout-revamp", "type": "live", "via": "slack-mcp", "locator": "#checkout-revamp since lastDigestAt" },
+    { "id": "repo", "label": "Git — acme/checkout", "type": "live", "via": "git", "locator": "~/code/checkout (git log since lastDigestAt + README, docs/)" },
+    { "id": "ctx-prd", "label": "PRD v1", "type": "context", "via": "file", "locator": "context/prd.md" }
+  ]
+}

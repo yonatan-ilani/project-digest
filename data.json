@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "project": "Acme Checkout Revamp",
+    "lastDigestAt": "2026-09-28T09:00:00Z",
+    "startDate": "2026-08-03T00:00:00Z",
+    "digestCount": 6,
+    "currentMilestoneId": "ms-payments",
+    "issueUrl": "https://github.com/acme/checkout/issues/{id}",
+    "teams": [["FE","Frontend"],["BE","Backend"],["PM","Product"],["OPS","Operations"]],
+    "health": { "status": "on-track", "why": "Payments phase 60% in; the one blocker (PSP sandbox keys) has an owner and an ETA." }
+  },
+  "roadmap": [
+    { "id": "ms-discovery", "name": "Discovery", "status": "done", "progress": 100, "targetDate": "2026-08-14",
+      "summary": "Funnel analysis done; cart abandonment concentrated on the shipping step.", "blockerIds": [],
+      "issues": [
+        { "id": "101", "title": "Funnel drop-off analysis", "status": "done", "team": "PM", "ticketId": "101" },
+        { "id": "102", "title": "Checkout UX teardown of 5 competitors", "status": "done", "team": "PM", "ticketId": "102" }
+      ] },
+    { "id": "ms-cart", "name": "New Cart", "status": "done", "progress": 100, "targetDate": "2026-09-04",
+      "summary": "Single-page cart shipped behind a flag to 100%.", "blockerIds": [],
+      "issues": [
+        { "id": "118", "title": "Single-page cart UI", "status": "done", "team": "FE", "ticketId": "118" },
+        { "id": "121", "title": "Cart pricing API v2", "status": "done", "team": "BE", "ticketId": "121" }
+      ] },
+    { "id": "ms-payments", "name": "Payments", "status": "current", "progress": 60, "targetDate": "2026-10-09",
+      "summary": "Wallets done; card tokenization in review; waiting on PSP sandbox keys for 3DS.", "blockerIds": ["blk-psp-keys"],
+      "issues": [
+        { "id": "134", "title": "Apple Pay / Google Pay buttons", "status": "done", "team": "FE", "ticketId": "134" },
+        { "id": "137", "title": "Card tokenization service", "status": "in-progress", "team": "BE", "ticketId": "137" },
+        { "id": "139", "title": "3DS challenge flow", "status": "blocked", "team": "BE", "ticketId": "139" },
+        { "id": "pay-copy", "title": "Error-state copy for declined cards", "status": "todo", "team": "PM", "ticketId": null },
+        { "id": "142", "title": "PSP webhook alerting", "status": "todo", "team": "OPS", "ticketId": "142" }
+      ] },
+    { "id": "ms-rollout", "name": "Rollout", "status": "upcoming", "progress": 10, "targetDate": "2026-10-23",
+      "summary": "Staged rollout 5% → 50% → 100% with conversion guardrail.", "blockerIds": [],
+      "issues": [
+        { "id": "150", "title": "Conversion guardrail dashboard", "status": "in-progress", "team": "OPS", "ticketId": "150" },
+        { "id": "roll-plan", "title": "Rollback runbook", "status": "todo", "team": "OPS", "ticketId": null }
+      ] }
+  ],
+  "agenda": {
+    "generatedAt": "2026-09-28T09:00:00Z", "targetDate": "2026-10-09", "daysRemaining": 11,
+    "focus": [
+      { "priority": 1, "owner": "Dana (BE)", "ticketId": "137", "title": "Land card tokenization PR", "why": "Unblocks 3DS the moment keys arrive.", "tag": "critical-path" },
+      { "priority": 2, "owner": "Sam (PM)", "ticketId": null, "title": "Chase PSP for sandbox keys", "why": "Only active blocker; promised last Friday.", "tag": "blocker" },
+      { "priority": 3, "owner": "Lee (OPS)", "ticketId": "150", "title": "Wire conversion guardrail alerts", "why": "Rollout can't start without it.", "tag": "prep" }
+    ]
+  },
+  "blockers": [
+    { "id": "blk-psp-keys", "title": "PSP sandbox keys for 3DS not issued", "detail": "Requested Sep 19; vendor ETA Sep 30.", "owner": "Sam (PM)", "phaseId": "ms-payments", "ticketId": null, "since": "2026-09-19T00:00:00Z", "staleSince": "2026-09-26T00:00:00Z" }
+  ],
+  "sources": [
+    { "id": "issues", "label": "GitHub Issues — acme/checkout", "type": "live", "lastSync": "2026-09-28T09:00:00Z", "ok": true, "note": "" },
+    { "id": "slack", "label": "Slack — #checkout-revamp", "type": "live", "lastSync": "2026-09-28T09:00:00Z", "ok": true, "note": "" },
+    { "id": "repo", "label": "Git — acme/checkout", "type": "live", "lastSync": "2026-09-28T09:00:00Z", "ok": true, "note": "" },
+    { "id": "ctx-prd", "label": "PRD v1", "type": "context", "lastSync": null, "ok": true, "note": "" }
+  ],
+  "stakeholders": [
+    { "id": "sh-sam", "name": "Sam", "role": "PM · owner", "owns": "Scope, PSP relationship", "trackerUser": "sam" },
+    { "id": "sh-dana", "name": "Dana", "role": "Backend lead", "owns": "Payments services", "trackerUser": "dana" },
+    { "id": "sh-lee", "name": "Lee", "role": "Ops", "owns": "Rollout + monitoring", "trackerUser": null }
+  ],
+  "stats": { "commits": 212, "linesAdded": 18400, "prs": 47, "repos": ["acme/checkout"] },
+  "specLinks": [ { "label": "PRD", "url": "https://example.com/prd" } ],
+  "timeline": [
+    { "date": "2026-09-26T15:00:00Z", "type": "ticket_closed", "entityId": "134", "summary": "Wallet buttons shipped." },
+    { "date": "2026-09-19T10:00:00Z", "type": "blocker_added", "entityId": "blk-psp-keys", "summary": "3DS blocked on PSP sandbox keys." },
+    { "date": "2026-09-04T12:00:00Z", "type": "milestone_passed", "entityId": "ms-cart", "summary": "New cart at 100%." }
+  ],
+  "delta": [
+    { "date": "2026-09-26T15:00:00Z", "type": "ticket_closed", "entityId": "134", "summary": "Wallet buttons shipped." }
+  ]
+}
