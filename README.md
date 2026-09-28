@@ -8,7 +8,7 @@ skill instead of a cron job.
 - **The page**: one static `index.html` with the data inlined. No backend and no
   network calls. It works from `file://`, GitHub Pages, S3, or an internal static host.
 
-**Live demo** (fake data): https://nehoil.github.io/project-digest/
+**Live demo** (fake data): https://yonatan-ilani.github.io/project-digest/
 
 ```
  sources.json ──▶ /digest (Claude, supervised) ──▶ data.json ──▶ build.py ──▶ index.html
